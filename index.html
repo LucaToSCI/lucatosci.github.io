@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selezione Casuale</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Decision Maker 1.0</h1>
+    <label for="option">Add an option:</label>
+    <input type="text" id="option">
+    <button onclick="aggiungiOpzione()">Add</button>
+    <button onclick="selezionaCasualmente()">Let Franco decide for you</button>
+    <button onclick="resettaOpzioni()">Reset Options</button>
+    <ul id="opzioniInserite"></ul>
+    <p id="risultato"></p>
+  </div>
+
+  <script>
+    var opzioniArray = [];
+
+    function aggiungiOpzione() {
+      var nuovaOpzione = document.getElementById('option').value.trim();
+      if (nuovaOpzione !== "") {
+        opzioniArray.push(nuovaOpzione);
+        document.getElementById('option').value = "";
+        aggiornaListaOpzioni();
+      }
+    }
+
+    function selezionaCasualmente() {
+      if (opzioniArray.length === 0) {
+        document.getElementById('risultato').innerText = "Cmon add at least one option!";
+        return;
+      }
+      var indiceCasuale = Math.floor(Math.random() * opzioniArray.length);
+      var opzioneCasuale = opzioniArray[indiceCasuale];
+      document.getElementById('risultato').innerHTML = "Franco has decided : <strong>" + opzioneCasuale + "</strong>";
+    }
+
+    function resettaOpzioni() {
+      opzioniArray = [];
+      aggiornaListaOpzioni();
+    }
+
+    function aggiornaListaOpzioni() {
+      var opzioniInseriteElement = document.getElementById('opzioniInserite');
+      opzioniInseriteElement.innerHTML = "";
+      opzioniArray.forEach(function(opzione) {
+        var li = document.createElement('li');
+        li.textContent = opzione;
+        opzioniInseriteElement.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
