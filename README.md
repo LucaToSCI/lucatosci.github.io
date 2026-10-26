@@ -1,7 +1,7 @@
 # lucatosci.github.io
 A rudimental webpage that makes sure to help you in your choices
 
-## Un cero per Maria
+## Un cero
 
 The candle page is available at [/cero/](https://lucatosci.github.io/cero/).
 Insert a virtual coin to light a candle, then use “Spegni” to extinguish it.
